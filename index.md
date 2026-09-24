@@ -1,26 +1,27 @@
 ---
 layout: default
-title: 首页
+title: WELCOME
 ---
 
-# 欢迎来到我的个人博客！
+# Welcome ！
 
-你好，我是 Jiangshr。
+Helloooo，I'm Jiangshr。Welcome to my world.
 
-Let's become a cloud together!
-
----
-
-## 文章分类
-
-- [科研笔记](#research)
-- [编程技术](#programming)
-- [生活随笔](#life)
-- [全部文章](#all-posts)
+Let's become a cloud together !
 
 ---
 
-## 最新文章
+## Categories
+
+- [Recording](#recording)
+- [Working](#working)
+- [Researching](#researching)
+- [Thinking](#thinking)
+- [All Articles](#all-posts)
+
+---
+
+## Most Recent
 
 {% for post in site.posts limit:5 %}
 
@@ -36,9 +37,9 @@ Let's become a cloud together!
 
 {% endfor %}
 
-<a id="research"></a>
+<a id="recording"></a>
 
-## 科研笔记
+## Recording
 
 {% assign research_posts = site.categories["科研笔记"] %}
 
@@ -48,11 +49,11 @@ Let's become a cloud together!
 
 {% endfor %}
 
-<a id="programming"></a>
+<a id="working"></a>
 
-## 编程技术
+## Working
 
-{% assign programming_posts = site.categories["编程技术"] %}
+{% assign programming_posts = site.categories["Working"] %}
 
 {% for post in programming_posts %}
 
@@ -60,11 +61,23 @@ Let's become a cloud together!
 
 {% endfor %}
 
-<a id="life"></a>
+<a id="researching"></a>
 
-## 生活随笔
+## Researching
 
-{% assign life_posts = site.categories["生活随笔"] %}
+{% assign programming_posts = site.categories["Researching"] %}
+
+{% for post in programming_posts %}
+
+- [{{ post.title }}]({{ post.url | relative_url }})
+
+{% endfor %}
+
+<a id="thinking"></a>
+
+## Thinking
+
+{% assign life_posts = site.categories["Thinking"] %}
 
 {% for post in life_posts %}
 
@@ -74,7 +87,7 @@ Let's become a cloud together!
 
 <a id="all-posts"></a>
 
-## 全部文章
+## All Articles
 
 {% for post in site.posts %}
 
@@ -84,8 +97,14 @@ Let's become a cloud together!
 
 ---
 
-## 关于我
+## About Me
 
-欢迎来到我的个人博客！
+I want to be a cloud.
 
-这里主要分享科研学习、编程技术和生活中的思考。
+Casual~
+
+Moving~
+
+Variable~
+
+It's all my clouds. I'm happy if one of them can bring you something.
