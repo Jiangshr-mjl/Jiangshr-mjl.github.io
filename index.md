@@ -7,9 +7,7 @@ title: 首页
 
 你好，我是 Jiangshr。
 
-这里是我的个人知识空间。
-
-我希望通过这个网站，记录自己的学习经历、科研心得、编程技术以及生活中的思考。
+Let's become a cloud together!
 
 ---
 
