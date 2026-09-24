@@ -3,7 +3,8 @@
 layout: default
 title: "我的第一篇博客文章"
 date: 2026-09-24
-categories: [生活随笔]
+categories:
+  - 生活随笔
 ---
 
 # 我的第一篇博客文章
