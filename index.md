@@ -12,23 +12,77 @@ title: 首页
 
 我希望通过这个网站，记录自己的学习经历、科研心得、编程技术以及生活中的思考。
 
-## 关于这个网站
+---
 
-建立这个网站的初衷，是希望能够将日常学习与生活中的收获整理成文章。
+## 文章分类
 
-我计划在这里分享以下内容：
+- [科研笔记](#research)
+- [编程技术](#programming)
+- [生活随笔](#life)
+- [全部文章](#all-posts)
 
-- 科研笔记与文献阅读
-- Python 编程与数据处理
-- 生活随笔与个人感悟
-- 其他值得记录的知识与思考
+---
 
 ## 最新文章
 
-我的个人博客正在建设中，第一篇文章即将发布。
+{% assign latest_posts = site.posts | limit: 5 %}
+
+{% for post in latest_posts %}
+
+### [{{ post.title }}]({{ post.url | relative_url }})
+
+发布日期：{{ post.date | date: "%Y-%m-%d" }}
+
+{{ post.excerpt | strip_html | truncate: 120 }}
+
+[阅读全文 →]({{ post.url | relative_url }})
+
+---
+
+{% endfor %}
+
+## 科研笔记 {#research}
+
+{% assign research_posts = site.categories["科研笔记"] %}
+
+{% for post in research_posts %}
+
+- [{{ post.title }}]({{ post.url | relative_url }})
+
+{% endfor %}
+
+## 编程技术 {#programming}
+
+{% assign programming_posts = site.categories["编程技术"] %}
+
+{% for post in programming_posts %}
+
+- [{{ post.title }}]({{ post.url | relative_url }})
+
+{% endfor %}
+
+## 生活随笔 {#life}
+
+{% assign life_posts = site.categories["生活随笔"] %}
+
+{% for post in life_posts %}
+
+- [{{ post.title }}]({{ post.url | relative_url }})
+
+{% endfor %}
+
+## 全部文章 {#all-posts}
+
+{% for post in site.posts %}
+
+- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})
+
+{% endfor %}
+
+---
 
 ## 关于我
 
-欢迎通过这个网站了解我的学习经历与研究兴趣。
+欢迎来到我的个人博客！
 
-未来，我会不断完善网站，并持续更新文章。
+这里主要分享科研学习、编程技术和生活中的思考。
