@@ -1,28 +1,20 @@
 ---
 layout: default
-title: "我的第一篇博客文章"
+title: "How to be a cloud"
 date: 2026-09-24
 categories:
   - 生活随笔
 ---
 
-# 我的第一篇博客文章
+# How to be a cloud
 
-今天，我建立了自己的个人博客。
+How to be a cloud? I have no idea.
 
-这是我在这个网站上发表的第一篇文章。
+But it is not a matter, let's just 
 
-## 为什么建立个人博客？
+- Do without Reasons
+- Keep thinking
+- Keep moving
+- Keep changing
 
-我希望能够拥有一个属于自己的空间，用来记录学习、科研和生活中的思考。
-
-## 未来的计划
-
-未来，我计划在这里分享：
-
-- 科研笔记
-- Python 编程心得
-- 文献阅读记录
-- 生活随笔
-
-希望通过持续写作，记录自己的成长。
+I'm happy to be a cloud with you !
