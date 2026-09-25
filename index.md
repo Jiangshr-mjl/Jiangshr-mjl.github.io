@@ -99,12 +99,8 @@ Let's become a cloud together !
 
 ## About Me
 
-I want to be a cloud.
+Let's to be a cloud.
 
-Casual~
-
-Moving~
-
-Variable~
+Casual~ Moving~ Variable~
 
 It's all my clouds. I'm happy if one of them can bring you something.
