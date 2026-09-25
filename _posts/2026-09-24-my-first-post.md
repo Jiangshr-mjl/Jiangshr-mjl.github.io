@@ -3,7 +3,7 @@ layout: default
 title: "How to be a cloud"
 date: 2026-09-24
 categories:
-  - 生活随笔
+  - Others
 ---
 
 # How to be a cloud
