@@ -16,7 +16,7 @@ Let's become a cloud together !
 - [Recording](#recording)
 - [Working](#working)
 - [Researching](#researching)
-- [Thinking](#thinking)
+- [Talking](#talking)
 - [All Articles](#all-posts)
 
 ---
@@ -73,11 +73,11 @@ Let's become a cloud together !
 
 {% endfor %}
 
-<a id="thinking"></a>
+<a id="talking"></a>
 
-## Thinking
+## Talking
 
-{% assign life_posts = site.categories["Thinking"] %}
+{% assign life_posts = site.categories["Talking"] %}
 
 {% for post in life_posts %}
 
