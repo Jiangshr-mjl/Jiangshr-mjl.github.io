@@ -41,7 +41,7 @@ Let's become a cloud together !
 
 ## Recording
 
-{% assign research_posts = site.categories["科研笔记"] %}
+{% assign research_posts = site.categories["Recording"] %}
 
 {% for post in research_posts %}
 
