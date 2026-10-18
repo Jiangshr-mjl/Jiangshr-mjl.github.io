@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{% assign toc_count = 0 %}
+{% capture toc_links %}
+  {% assign fragments = content | split: '<h' %}
+  {% for fragment in fragments offset:1 %}
+    {% assign level = fragment | slice: 0, 1 %}
+    {% if level == '2' or level == '3' %}
+      {% assign heading = fragment | split: '</h' | first %}
+      {% if heading contains 'id="' %}
+        {% assign heading_id = heading | split: 'id="' | last | split: '"' | first %}
+        {% assign heading_label = heading | prepend: '<h' | strip_html %}
+        {% assign toc_count = toc_count | plus: 1 %}
+        <li class="toc-level-{{ level }}"><a href="#{{ heading_id | escape }}">{{ heading_label | escape_once }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+<div class="post-shell shell">
+  <header class="post-header reading-width">
+    <a class="back-link" href="{{ '/archive/' | relative_url }}">← All notes</a>
+    <div class="post-meta">{% include post-categories.html post=page %}<span class="meta-dot" aria-hidden="true">·</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time></div>
+    <h1>{{ page.display_title | default: page.title | escape }}</h1>
+    {% if page.description %}<p class="post-deck">{{ page.description | escape }}</p>{% endif %}
+  </header>
+  <div class="post-body-wrap">
+    {% if toc_count >= 3 %}
+    <aside class="post-toc" aria-label="Table of contents"><details open><summary>On this page</summary><ol>{{ toc_links }}</ol></details></aside>
+    {% endif %}
+    <article class="prose reading-width">{{ content }}</article>
+  </div>
+  <nav class="post-pagination reading-width" aria-label="Adjacent notes">
+    <div>{% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>← Previous note</span><strong>{{ page.previous.display_title | default: page.previous.title | escape }}</strong></a>{% endif %}</div>
+    <div>{% if page.next %}<a href="{{ page.next.url | relative_url }}"><span>Next note →</span><strong>{{ page.next.display_title | default: page.next.title | escape }}</strong></a>{% endif %}</div>
+  </nav>
+  <div class="post-return reading-width"><a href="{{ '/archive/' | relative_url }}">Back to archive {% include icon.html name='arrow' %}</a></div>
+</div>

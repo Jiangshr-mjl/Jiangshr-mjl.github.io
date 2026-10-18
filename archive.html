@@ -1,0 +1,19 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+description: All the notes, collected along the way.
+---
+<div class="shell archive-page">
+  <header class="page-heading"><p class="eyebrow">COLLECTED ALONG THE WAY</p><h1>All the notes<span class="heading-dot">.</span></h1><p>Little moments. Wandering thoughts. Questions worth keeping.</p></header>
+  <nav class="archive-jumps" aria-label="Archive sections"><a href="#all-posts">All notes <span>{{ site.posts.size }}</span></a>{% for category in site.data.categories %}<a href="#{{ category.id }}">{{ category.name }} <span>{% include category-count.html name=category.name %}</span></a>{% endfor %}<a href="#others">Others <span>{% include category-count.html name='Others' %}</span></a></nav>
+  <section class="archive-all" id="all-posts" aria-label="All notes by year">
+    {% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+    {% for year in years %}<div class="archive-year"><h2>{{ year.name }}<span>{{ year.items.size }} notes</span></h2><ul>{% for post in year.items %}{% include archive-row.html post=post %}{% endfor %}</ul></div>{% else %}<p class="empty-state">Notes are on their way.</p>{% endfor %}
+  </section>
+  <div class="section-heading archive-divider"><div><p class="eyebrow">A FEW DIFFERENT PATHS</p><h2>Browse by category<span class="heading-dot">.</span></h2></div></div>
+  {% for category in site.data.categories %}
+    <section class="archive-group" id="{{ category.id }}"><header><h2>{% include icon.html name=category.icon %}{{ category.name }}</h2><p>{{ category.description }}</p></header><ul>{% assign found = false %}{% for post in site.posts %}{% assign matches = false %}{% if post.categories contains category.name %}{% assign matches = true %}{% elsif category.name == 'Thinking' and post.categories contains 'Talking' %}{% assign matches = true %}{% endif %}{% if matches %}{% assign found = true %}{% include archive-row.html post=post %}{% endif %}{% endfor %}{% unless found %}<li class="empty-state">Notes are on their way.</li>{% endunless %}</ul></section>
+  {% endfor %}
+  <section class="archive-group" id="others"><header><h2>{% include icon.html name='cloud' %}Others</h2><p>A little of everything else.</p></header><ul>{% for post in site.categories.Others %}{% include archive-row.html post=post %}{% else %}<li class="empty-state">Notes are on their way.</li>{% endfor %}</ul></section>
+</div>

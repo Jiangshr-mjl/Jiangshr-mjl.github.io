@@ -1,0 +1,15 @@
+---
+layout: default
+title: About
+permalink: /about/
+description: Jiangshr — keeping notes on life, science, code, and everything in between.
+---
+<div class="shell about-page">
+  <header class="page-heading about-heading"><div><p class="eyebrow">THE PERSON BEHIND THE NOTES</p><h1>Hello, I’m Jiangshr<span class="heading-dot">.</span></h1><p>Being a cloud. And figuring things out along the way.</p></div><div class="about-cloud" aria-hidden="true">{% include icon.html name='cloud' %}</div></header>
+  <div class="about-content prose reading-width">
+    <section><p class="about-lead">你好，我是 Jiangshr。<br>欢迎来到我的个人博客！</p><p>我对科学研究、编程技术以及生活中的各种问题充满兴趣。目前，我希望通过持续学习和写作，不断积累知识与经验。</p></section>
+    <section><h2>What I write about</h2><p>这里是我的个人综合空间，用来记录生活、整理思考，也留下学习与探索的过程。</p><dl class="about-topics">{% for category in site.data.categories %}<div><dt><a href="{{ '/archive/' | relative_url }}#{{ category.id }}">{{ category.name }} <span aria-hidden="true">↗</span></a></dt><dd>{% case category.id %}{% when 'recording' %}日常片段、月度回顾与值得记住的小事。{% when 'thinking' %}个人随笔，以及生活中的各种问题。{% when 'working' %}Python 编程、技术探索与动手实践。{% when 'researching' %}科研学习、文献阅读与不断追问。{% endcase %}</dd></div>{% endfor %}</dl></section>
+    <section><h2>Why a cloud?</h2><blockquote><p>Casual. Moving. Variable.</p></blockquote><p>Keep thinking. Keep moving. Keep changing.</p><p>It’s all my clouds. I’m happy if one of them can bring you something.</p></section>
+    <section><h2>Say hello</h2><p>你可以在 <a href="{{ site.github_url }}">GitHub</a> 找到我，也可以通过 <a href="{{ '/feed.xml' | relative_url }}">RSS</a> 订阅这里的新文章。</p><p>感谢你的访问。Let’s become a cloud together!</p></section>
+  </div>
+</div>

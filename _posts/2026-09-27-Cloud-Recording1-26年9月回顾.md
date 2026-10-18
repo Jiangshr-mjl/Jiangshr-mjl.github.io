@@ -1,12 +1,11 @@
 ---
-layout: default
-title: "Cloud Recording: 26年9月回顾"
+layout: post
+permalink: /recording/2026/09/27/Recording1-26年9月回顾.html
+title: Cloud-Recording | 26年9月回顾
 date: 2026-09-27
 categories:
   - Recording
 ---
-# 26年9月回顾
-
 星奔川骛，第一次看到这个词就非常喜欢。不是夸张手法、它不仅仅是在表达时间流逝之快，星星和河流跑得着急、不能停歇。
 
 这个月总体还算充实，忙忙碌碌，核心工作稳步推进。

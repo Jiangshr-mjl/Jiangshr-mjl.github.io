@@ -1,0 +1,6 @@
+<li class="archive-row">
+  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: '%b %d' }}</time>
+  <a class="archive-title" href="{{ include.post.url | relative_url }}">{{ include.post.display_title | default: include.post.title | escape }}</a>
+  {% assign row_categories = include.post.categories | join: '|' | replace: 'Talking', 'Thinking' | split: '|' | uniq %}
+  <span class="archive-category">{{ row_categories | join: ' · ' | escape }}</span>
+</li>

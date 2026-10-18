@@ -1,12 +1,11 @@
 ---
-layout: default
+layout: post
+permalink: /others/2026/09/24/my-first-post.html
 title: "How to be a cloud"
 date: 2026-09-24
 categories:
   - Others
 ---
-
-# How to be a cloud
 
 How to be a cloud? I have no idea.
 

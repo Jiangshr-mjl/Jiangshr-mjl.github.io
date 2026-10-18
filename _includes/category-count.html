@@ -1,0 +1,9 @@
+{%- assign count = 0 -%}
+{%- for entry in site.posts -%}
+  {%- if entry.categories contains include.name -%}
+    {%- assign count = count | plus: 1 -%}
+  {%- elsif include.name == 'Thinking' and entry.categories contains 'Talking' -%}
+    {%- assign count = count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- count -}}

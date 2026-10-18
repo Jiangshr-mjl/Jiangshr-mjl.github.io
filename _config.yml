@@ -1,5 +1,28 @@
 
 title: Cloud's Notes
 description: Being a cloud
-theme: jekyll-theme-minimal
 lang: zh-CN
+url: https://jiangshr-mjl.github.io
+baseurl: ""
+timezone: Asia/Shanghai
+author: Jiangshr
+github_url: https://github.com/Jiangshr-mjl
+markdown: kramdown
+highlighter: rouge
+future: false
+unpublished: false
+show_drafts: false
+exclude:
+  - Undone
+  - Backup
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

@@ -1,0 +1,16 @@
+- name: Recording
+  id: recording
+  description: Little moments, kept close.
+  icon: sun
+- name: Thinking
+  id: thinking
+  description: Room for a wandering mind.
+  icon: spark
+- name: Working
+  id: working
+  description: Learning by making.
+  icon: code
+- name: Researching
+  id: researching
+  description: Following a question further.
+  icon: orbit

@@ -1,0 +1,12 @@
+{%- if include.post.description and include.post.description != '' -%}
+  {{- include.post.description | strip_html | strip | escape -}}
+{%- else -%}
+  {%- assign paragraphs = include.post.content | markdownify | split: '<p>' -%}
+  {%- for paragraph in paragraphs offset:1 -%}
+    {%- assign summary_text = paragraph | split: '</p>' | first | strip_html | strip -%}
+    {%- if summary_text != '' -%}
+      {{- summary_text | escape_once -}}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

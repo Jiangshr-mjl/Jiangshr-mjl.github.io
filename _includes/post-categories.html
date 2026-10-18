@@ -1,0 +1,4 @@
+{%- assign display_categories = include.post.categories | join: '|' | replace: 'Talking', 'Thinking' | split: '|' | uniq -%}
+{%- for category in display_categories -%}
+  <a class="category-label" href="{{ '/archive/' | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
+{%- endfor -%}
