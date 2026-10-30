@@ -33,8 +33,11 @@
   </header>
   <main id="main" class="main-content" tabindex="-1">{{ content }}</main>
   <footer class="site-footer shell">
-    <div class="footer-note">{% include icon.html name='cloud' %}<div><p>Being a cloud.</p><span>Keep thinking. Keep moving. Keep changing.</span></div></div>
-    <div class="footer-right"><nav aria-label="Footer navigation"><a href="{{ site.github_url }}">GitHub <span aria-hidden="true">↗</span></a><a href="{{ '/feed.xml' | relative_url }}">{% include icon.html name='rss' %} RSS</a></nav><span>© {{ site.time | date: '%Y' }} {{ site.author }} · Made of little moments.</span></div>
+    <p class="footer-note">Being a cloud.</p>
+    <div class="footer-right">
+      <nav aria-label="Footer navigation"><a href="{{ site.github_url }}">GitHub</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a></nav>
+      <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>
+    </div>
   </footer>
 </body>
 </html>
