@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  {% if site.busuanzi.enabled and jekyll.environment == 'production' %}
+  <script src="{{ '/assets/js/pageviews.js' | relative_url }}" data-site-url="{{ site.url | escape }}" defer></script>
+  {% endif %}
 </head>
 <body>
   {% include symbols.html %}
@@ -33,7 +36,12 @@
   </header>
   <main id="main" class="main-content" tabindex="-1">{{ content }}</main>
   <footer class="site-footer shell">
-    <p class="footer-note">Being a cloud.</p>
+    <div class="footer-copy">
+      <p class="footer-note">Being a cloud.</p>
+      {% if site.busuanzi.enabled and jekyll.environment == 'production' %}
+      <p id="busuanzi_container_site_pv" class="footer-pageviews" style="display:none">全站浏览 <span id="busuanzi_value_site_pv"></span> 次 · <a href="https://busuanzi.ibruce.info/" rel="external">不蒜子</a></p>
+      {% endif %}
+    </div>
     <div class="footer-right">
       <nav aria-label="Footer navigation"><a href="{{ site.github_url }}">GitHub</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a></nav>
       <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>

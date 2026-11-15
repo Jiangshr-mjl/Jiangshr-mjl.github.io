@@ -63,4 +63,15 @@ The redesign is local until the intended changes are committed and pushed to the
 
 Check Home, Archive, About, a long post, and a short post at 375, 768, and 1440 pixels, in both color schemes. Verify theme persistence, keyboard focus, reduced motion, collapsed mobile contents, wide code/tables, and readable content without JavaScript.
 
-The site follows the system color scheme until a visitor switches it. The preference is stored only in the browser as `cloud-notes-theme`. No analytics, cookies, comments, search service, or third-party runtime is included.
+The site follows the system color scheme until a visitor switches it. The preference is stored only in the browser as `cloud-notes-theme`. The site includes neither a comments system nor a search service.
+
+## Pageview counters
+
+[Busuanzi](https://busuanzi.ibruce.info/) supplies the total site pageviews in the footer and individual article pageviews beside the publication date. This is a third-party public counter, not a private analytics dashboard. The provider receives requests from readers' browsers, including the referring page URL, to identify the site and article. Counts depend on the provider's availability and counting rules, and do not recover visits from before integration.
+
+- `_config.yml` enables the integration with `busuanzi.enabled: true`. Set it to `false` and rebuild to remove both the counters and their loader.
+- Counters are included only when `JEKYLL_ENV=production`, as on GitHub Pages. The browser also checks that the current origin matches `site.url`, so locally previewed production builds do not contact the counter. Update `site.url` when moving the blog to a custom domain.
+- Empty labels and their separators stay hidden until the service returns counts. With JavaScript disabled, blocked requests, or a service failure, the article remains readable without counters.
+- Article counts belong to their public URLs; keep published URLs stable. Avoid putting sensitive information in page URLs, and do not set a site-wide referrer policy just for this integration: the official counter script sets the policy on its own collection request.
+
+Validate a normal development build with `python scripts/verify_site.py --pageviews disabled`. To check the production markup locally without sending visits, build with `JEKYLL_ENV=production` and run `python scripts/verify_site.py --pageviews enabled`; the interaction checks use mocked requests and never contact Busuanzi. These checks do not verify the live service's availability.

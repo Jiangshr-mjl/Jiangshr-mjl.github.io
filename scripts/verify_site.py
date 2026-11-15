@@ -1,11 +1,11 @@
 """Validate a Jekyll build without third-party Python packages.
 
-Run: python scripts/verify_site.py [path-to-built-site]
+Run: python scripts/verify_site.py [path-to-built-site] [--pageviews enabled|disabled]
 """
+import argparse
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
-import sys
 import xml.etree.ElementTree as ET
 
 
@@ -16,6 +16,9 @@ class Page(HTMLParser):
         self.references = []
         self.h1_count = 0
         self.canonical = False
+        self.is_post = False
+        self.pageviews_scripts = []
+        self.counter_containers = {}
         self.feed(text)
 
     def handle_starttag(self, tag, pairs):
@@ -30,15 +33,44 @@ class Page(HTMLParser):
             self.references.append(attrs['src'])
         if tag == 'link' and attrs.get('rel') == 'canonical':
             self.canonical = True
+        if 'post-shell' in attrs.get('class', '').split():
+            self.is_post = True
+        if tag == 'script' and urlsplit(attrs.get('src', '')).path.endswith('/assets/js/pageviews.js'):
+            self.pageviews_scripts.append(attrs)
+        if attrs.get('id', '').startswith('busuanzi_container_'):
+            self.counter_containers[attrs['id']] = attrs
 
 
-root = Path(sys.argv[1] if len(sys.argv) > 1 else '_site').resolve()
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('site', nargs='?', default='_site')
+parser.add_argument('--pageviews', choices=('enabled', 'disabled'))
+args = parser.parse_args()
+root = Path(args.site).resolve()
 assert root.is_dir(), f'Build output not found: {root}'
 pages = {}
 for path in root.rglob('*.html'):
     page = Page(path.read_text(encoding='utf-8'))
     assert page.h1_count == 1, f'{path}: expected one H1, got {page.h1_count}'
     assert page.canonical, f'{path}: missing canonical URL'
+    enabled = bool(page.pageviews_scripts)
+    if args.pageviews:
+        assert enabled == (args.pageviews == 'enabled'), f'{path}: unexpected pageviews state'
+    expected_counters = set()
+    if enabled:
+        assert len(page.pageviews_scripts) == 1, f'{path}: duplicate pageviews loader'
+        loader = page.pageviews_scripts[0]
+        assert 'defer' in loader, f'{path}: pageviews loader must defer'
+        site = urlsplit(loader.get('data-site-url', ''))
+        assert site.scheme == 'https' and site.netloc, f'{path}: invalid production site URL'
+        expected_counters.add('busuanzi_container_site_pv')
+        if page.is_post:
+            expected_counters.add('busuanzi_container_page_pv')
+    assert set(page.counter_containers) == expected_counters, f'{path}: unexpected counters'
+    for counter_id, attrs in page.counter_containers.items():
+        assert 'display:none' in attrs.get('style', '').replace(' ', ''), f'{path}: counter must start hidden'
+        assert counter_id.replace('_container_', '_value_') in page.ids, f'{path}: missing counter value'
+    if not enabled:
+        assert not any(id_.startswith('busuanzi_') for id_ in page.ids), f'{path}: disabled counters leaked'
     pages[path.resolve()] = page
 
 for path, page in pages.items():
@@ -72,4 +104,4 @@ for item in items:
     assert (root / unquote(urlsplit(link).path).lstrip('/')).is_file(), f'RSS item missing: {link}'
     assert item.findtext('title'), 'RSS title missing'
 
-print(f'PASS: {len(pages)} HTML pages, local links and anchors, one H1 per page, legacy URLs, draft exclusion, {len(items)} RSS items.')
+print(f'PASS: {len(pages)} HTML pages, local links and anchors, one H1 per page, legacy URLs, draft exclusion, pageviews markup, {len(items)} RSS items.')

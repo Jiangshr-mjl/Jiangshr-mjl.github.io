@@ -106,6 +106,8 @@ button[hidden] { display: none; }
 .home { padding-bottom: 52px; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--border); padding-block: 28px 32px; margin-top: 20px; }
 .footer-note { font-size: 14px; margin: 0; color: var(--muted); }
+.footer-pageviews { margin: 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.footer-pageviews a { color: inherit; }
 .footer-right { display: flex; align-items: center; gap: 32px; font-size: 13px; }
 .footer-right > span { color: var(--muted); }
 .footer-right nav { display: flex; gap: 22px; }
@@ -132,6 +134,8 @@ button[hidden] { display: none; }
 .post-header { margin-bottom: 35px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
 .back-link { display: inline-block; font-size: 12px; margin-bottom: 36px; }
 .post-meta { color: var(--muted); margin-bottom: 16px; }
+.post-pageviews { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.post-pageviews > .meta-dot { margin-right: 10px; }
 .post-header h1 { font-size: clamp(28px, 3.4vw, 38px); letter-spacing: -1px; line-height: 1.45; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
 .post-deck { font-size: 17px; color: var(--muted); margin: 16px 0 0; }
 .post-body-wrap { position: relative; }

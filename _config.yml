@@ -7,6 +7,8 @@ baseurl: ""
 timezone: Asia/Shanghai
 author: Jiangshr
 github_url: https://github.com/Jiangshr-mjl
+busuanzi:
+  enabled: true
 markdown: kramdown
 highlighter: rouge
 future: false

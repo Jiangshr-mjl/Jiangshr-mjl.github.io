@@ -20,7 +20,12 @@ layout: default
 <div class="post-shell shell">
   <header class="post-header reading-width">
     <a class="back-link" href="{{ '/archive/' | relative_url }}">← All notes</a>
-    <div class="post-meta">{% include post-categories.html post=page %}<span class="meta-dot" aria-hidden="true">·</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time></div>
+    <div class="post-meta">
+      {% include post-categories.html post=page %}<span class="meta-dot" aria-hidden="true">·</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time>
+      {% if site.busuanzi.enabled and jekyll.environment == 'production' %}
+      <span id="busuanzi_container_page_pv" class="post-pageviews" style="display:none"><span class="meta-dot" aria-hidden="true">·</span><span id="busuanzi_value_page_pv"></span> 次浏览</span>
+      {% endif %}
+    </div>
     <h1>{{ page.display_title | default: page.title | escape }}</h1>
     {% if page.description %}<p class="post-deck">{{ page.description | escape }}</p>{% endif %}
   </header>
