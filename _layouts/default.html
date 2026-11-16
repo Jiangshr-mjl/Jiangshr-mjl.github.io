@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  {% if page.math %}
+  <script src="{{ '/assets/js/math.js' | relative_url }}" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" defer></script>
+  {% endif %}
   {% if site.busuanzi.enabled and jekyll.environment == 'production' %}
   <script src="{{ '/assets/js/pageviews.js' | relative_url }}" data-site-url="{{ site.url | escape }}" defer></script>
   {% endif %}

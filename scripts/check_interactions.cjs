@@ -59,6 +59,17 @@ assert.equal(app.toc.open, true, 'Wide TOC opens on resize');
 assert.equal(boot({ wide: true }).toc.open, true);
 console.log('PASS: system theme, saved override, reload, invalid/blocked storage, cross-tab sync, responsive TOC.');
 
+// Math must accept both author-written inline TeX and Kramdown's output.
+const mathContext = { window: {} };
+vm.runInNewContext(source('math.js'), mathContext);
+const math = mathContext.window.MathJax;
+assert.equal(JSON.stringify(math.tex.inlineMath), JSON.stringify([['$', '$'], ['\\(', '\\)']]));
+assert.equal(JSON.stringify(math.tex.displayMath), JSON.stringify([['$$', '$$'], ['\\[', '\\]']]));
+assert.equal(math.tex.processEscapes, true);
+assert.equal(math.options.ignoreHtmlClass, 'main-content');
+assert.equal(math.options.processHtmlClass, 'prose');
+console.log('PASS: inline and display math delimiters, escaping, prose-only processing.');
+
 // Do not contact the live counter during tests or count preview traffic.
 function bootPageviews({ siteUrl = 'https://example.com', origin = 'https://example.com', currentScript = true } = {}) {
   const scripts = [];

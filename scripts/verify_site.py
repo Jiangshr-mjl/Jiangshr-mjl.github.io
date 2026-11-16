@@ -49,7 +49,14 @@ root = Path(args.site).resolve()
 assert root.is_dir(), f'Build output not found: {root}'
 pages = {}
 for path in root.rglob('*.html'):
-    page = Page(path.read_text(encoding='utf-8'))
+    text = path.read_text(encoding='utf-8')
+    page = Page(text)
+    if r'\[' in text:
+        assert page.is_post, f'{path}: math article must use the post layout'
+        assert '<article class="prose reading-width">' in text, f'{path}: missing prose container'
+        assert '/assets/js/math.js' in text and 'mathjax@3.2.2' in text, f'{path}: missing math renderer'
+        assert text.index('/assets/js/math.js') < text.index('mathjax@3.2.2'), f'{path}: math config must load first'
+        assert text.count(r'\[') == text.count(r'\]'), f'{path}: unbalanced display math'
     assert page.h1_count == 1, f'{path}: expected one H1, got {page.h1_count}'
     assert page.canonical, f'{path}: missing canonical URL'
     enabled = bool(page.pageviews_scripts)
