@@ -69,7 +69,7 @@ Write the body immediately below the front matter. The layout renders the title:
   cities: [xuchang, gongyi, luoyang, zhengzhou]
 ```
 
-列表按首次出现的城市或行程分组，同组经历按填写顺序展示。保存并重新构建博客后，地图和文字列表会一起更新。
+列表按每座城市或每段行程的首次到访时间从早到晚排列，组内经历也按开始年月排列。同月的经历沿用填写顺序。只有「童年」等文字日期时，可用 `sort_key` 指定显示顺序，例如 `"2003.06~"` 表示排在 2003 年 6 月之后。页面始终显示原来的 `date`。保存并重新构建博客后，地图和文字列表会一起更新。
 
 ## URL compatibility
 

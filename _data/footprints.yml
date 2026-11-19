@@ -62,6 +62,7 @@ entries:
     cities: [ruijin]
   - id: guangzhou-tongnian
     date: "童年（幼儿园时期）"
+    sort_key: "2003.06~"  # 具体年月未记，排序时放在瑞金记录的起点之后。
     text: 小时候在广州住过一段时间，也在这里上过幼儿园。
     cities: [guangzhou]
   - id: guangzhou-benke

@@ -6,7 +6,12 @@ description: 在地图上看看我去过的城市，以及在那里读书、生�
 footprints: true
 ---
 {% assign footprints = site.data.footprints %}
-{% assign groups = footprints.entries | group_by_exp: 'entry', 'entry.cities | join: ","' %}
+{% assign months = footprints.entries | group_by_exp: 'entry', 'entry.sort_key | default: entry.date | replace: "–", " " | split: " " | first' | sort: 'name' %}
+{% assign chronological_entries = '' | split: ',' %}
+{% for month in months %}
+  {% assign chronological_entries = chronological_entries | concat: month.items %}
+{% endfor %}
+{% assign groups = chronological_entries | group_by_exp: 'entry', 'entry.cities | join: ","' %}
 <div class="shell footprints-page" data-footprints>
   <header class="page-heading footprints-heading">
     <h1>{{ page.title | escape }}</h1>
