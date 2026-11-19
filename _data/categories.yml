@@ -1,16 +1,30 @@
 - name: Recording
   id: recording
   description: Little moments, kept close.
+  description_zh: 日常片段、月度回顾与值得记住的小事。
   icon: sun
 - name: Thinking
   id: thinking
   description: Room for a wandering mind.
+  description_zh: 个人随笔，以及生活中的各种问题。
   icon: spark
 - name: Working
   id: working
   description: Learning by making.
+  description_zh: Python 编程、技术探索与动手实践。
   icon: code
 - name: Researching
   id: researching
   description: Following a question further.
+  description_zh: 科研学习、文献阅读与不断追问。
   icon: orbit
+- name: Learning
+  id: learning
+  description: Notes on what I’m learning.
+  description_zh: 学习笔记，以及把难题弄懂的过程。
+  icon: book
+- name: Living
+  id: living
+  description: Life as I’m living it.
+  description_zh: 分享日常里的兴趣、习惯和新体验。
+  icon: cup

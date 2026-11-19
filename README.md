@@ -40,7 +40,7 @@ description: Optional summary for the article list and RSS.
 
 Write the body immediately below the front matter. The layout renders the title: do not repeat it as a `#` heading. Use `##` and `###` for sections. Three or more such headings automatically produce a table of contents, including when JavaScript is disabled.
 
-- Categories: `Recording`, `Thinking`, `Working`, `Researching`, plus historical `Others`.
+- Available categories are `Recording`, `Thinking`, `Working`, `Researching`, `Learning`, and `Living`, plus historical `Others`.
 - Historical `Talking` posts appear under `Thinking` without changing their category or URL.
 - Optional `display_title` overrides the visible title consistently in lists, articles, and RSS, while keeping the original `title` field.
 - Optional `description` supplies the summary; otherwise the first prose paragraph is used.

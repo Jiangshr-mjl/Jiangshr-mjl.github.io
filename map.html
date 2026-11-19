@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 足迹地图
+title: map
 permalink: /map/
 description: 在地图上看看我去过的城市，以及在那里读书、生活和出差的片段。
 footprints: true
@@ -9,7 +9,7 @@ footprints: true
 {% assign groups = footprints.entries | group_by_exp: 'entry', 'entry.cities | join: ","' %}
 <div class="shell footprints-page" data-footprints>
   <header class="page-heading footprints-heading">
-    <h1>足迹地图<span class="heading-dot" aria-hidden="true">.</span></h1>
+    <h1>{{ page.title | escape }}</h1>
     <p>{{ footprints.cities.size }} 座城市 <span aria-hidden="true">·</span> {{ footprints.entries.size }} 段经历</p>
   </header>
   <div class="footprints-layout">
