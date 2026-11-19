@@ -1,0 +1,19 @@
+---
+layout: default
+title: 订阅文章
+permalink: /subscribe/
+description: 通过 RSS 阅读器接收 Cloud’s Notes 的新文章。
+---
+<div class="shell">
+  <header class="page-heading"><h1>订阅文章</h1></header>
+  <div class="subscribe-content">
+    <p>在你的 RSS 阅读器里选择「添加订阅」，粘贴下面的地址，就能收到这里的新文章。</p>
+    <label for="feed-address">RSS 订阅地址</label>
+    <div class="subscribe-controls">
+      <input id="feed-address" type="url" value="{{ '/feed.xml' | absolute_url | escape }}" readonly>
+      <button id="copy-feed" type="button" hidden>复制地址</button>
+    </div>
+    <p id="copy-status" role="status"></p>
+  </div>
+</div>
+<script src="{{ '/assets/js/subscribe.js' | relative_url }}" defer></script>

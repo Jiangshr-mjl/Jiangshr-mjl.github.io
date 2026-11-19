@@ -5,7 +5,7 @@ permalink: /archive/
 description: All the notes, collected along the way.
 ---
 <div class="shell archive-page">
-  <header class="page-heading"><h1>All the notes<span class="heading-dot">.</span></h1></header>
+  <header class="page-heading"><h1>All the notes</h1></header>
   <nav class="archive-jumps" aria-label="Archive sections"><a href="#all-posts">All notes <span>{{ site.posts.size }}</span></a>{% for category in site.data.categories %}<a href="#{{ category.id }}">{{ category.name }} <span>{% include category-count.html name=category.name %}</span></a>{% endfor %}<a href="#others">Others <span>{% include category-count.html name='Others' %}</span></a></nav>
   <section class="archive-all" id="all-posts" aria-label="All notes by year">
     {% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
