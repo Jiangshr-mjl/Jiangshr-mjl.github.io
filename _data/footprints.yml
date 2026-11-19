@@ -45,6 +45,15 @@ cities:
     name: 苏州
     lat: 31.3000
     lng: 120.6194
+  - id: beijing  # Q956
+    name: 北京
+    summary_label: "2015.07 | 2025.07 | 2025.09"
+    lat: 39.9040
+    lng: 116.4075
+  - id: foshan  # Q34412
+    name: 佛山
+    lat: 23.0292
+    lng: 113.1056
 
 entries:
   - id: ruijin-guxiang
@@ -83,3 +92,19 @@ entries:
     date: "2026.09"
     text: 读研后第一次出门玩儿。
     cities: [suzhou]
+  - id: beijing-tanqin
+    date: "2015.07"
+    text: 前往北京看老爸。
+    cities: [beijing]
+  - id: beijing-xialingying
+    date: "2025.07"
+    text: 参加气科院夏令营。
+    cities: [beijing]
+  - id: beijing-yutuimian
+    date: "2025.09"
+    text: 参加气科院预推免。
+    cities: [beijing]
+  - id: foshan-feiji
+    date: "2025.07"
+    text: 第一次坐飞机。
+    cities: [foshan]

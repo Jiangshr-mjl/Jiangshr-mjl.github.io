@@ -270,6 +270,10 @@ button[hidden] { display: none; }
   .about-content { padding-top: 30px; }
   .about-lead { font-size: 20px; }
 }
+@media (max-width: 400px) {
+  .site-nav { column-gap: 3vw; }
+  .site-nav .theme-toggle { flex-shrink: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .text-link:hover .icon { transform: none; }
