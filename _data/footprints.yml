@@ -1,0 +1,85 @@
+# 城市代表点采用 Wikidata 的 WGS84 坐标（P625），每项注释为对应实体。
+cities:
+  - id: ruijin  # Q1025459
+    name: 瑞金
+    lat: 25.8833
+    lng: 116.0333
+  - id: guangzhou  # Q16572
+    name: 广州
+    summary_label: "童年时期 | 2022.06-09"
+    lat: 23.1300
+    lng: 113.2600
+  - id: zhuhai  # Q59095
+    name: 珠海
+    lat: 22.2742
+    lng: 113.5719
+  - id: fuzhou  # Q68481
+    name: 福州
+    lat: 26.0769
+    lng: 119.2917
+  - id: nanjing  # Q16666
+    name: 南京
+    lat: 32.0608
+    lng: 118.7789
+  - id: xuchang  # Q404529
+    name: 许昌
+    lat: 34.0244
+    lng: 113.8201
+  - id: gongyi  # Q1359997
+    name: 巩义
+    lat: 34.7513
+    lng: 112.9854
+  - id: luoyang  # Q187136
+    name: 洛阳
+    lat: 34.6587
+    lng: 112.4245
+  - id: zhengzhou  # Q30340
+    name: 郑州
+    lat: 34.7492
+    lng: 113.6605
+  - id: shanghai  # Q8686
+    name: 上海
+    lat: 31.2325
+    lng: 121.4692
+  - id: suzhou  # Q42622
+    name: 苏州
+    lat: 31.3000
+    lng: 120.6194
+
+entries:
+  - id: ruijin-guxiang
+    date: "2003.06–2022.09"
+    text: 我的故乡。在这里读了幼儿园、小学、初中和高中。
+    cities: [ruijin]
+  - id: guangzhou-tongnian
+    date: "童年（幼儿园时期）"
+    text: 小时候在广州住过一段时间，也在这里上过幼儿园。
+    cities: [guangzhou]
+  - id: guangzhou-benke
+    date: "2022.09–2023.07"
+    text: 在广州读中山大学本科第一年。
+    cities: [guangzhou]
+  - id: zhuhai-benke
+    date: "2023.09–2026.06"
+    text: 在珠海读中山大学本科后三年。
+    cities: [zhuhai]
+  - id: fuzhou-chuchai
+    date: "2025.10"
+    text: 第一次出差。
+    cities: [fuzhou]
+  - id: nanjing-jiaoliu
+    date: "2026.07"
+    text: 前往南京大学交流学习。
+    cities: [nanjing]
+  - id: henan-waichang
+    date: "2026.07"
+    text: 第二次出差，参加暴雨外场观测实验。
+    cities: [xuchang, gongyi, luoyang, zhengzhou]
+  - id: shanghai-duyan
+    date: "2026.09 至今"
+    text: 在上海读研究生一年级。
+    cities: [shanghai]
+  - id: suzhou-chuyou
+    date: "2026.09"
+    text: 读研后第一次出门玩儿。
+    cities: [suzhou]

@@ -19,6 +19,7 @@ On this Windows workspace, `./scripts/preview.ps1` also finds the portable Ruby 
 bundle exec jekyll build
 python scripts/verify_site.py
 node scripts/check_interactions.cjs
+node scripts/check_footprints.cjs
 ```
 
 The Python check uses only the standard library. The optional interaction check uses Node's built-in test utilities; the site itself needs no Node build or external font service.
@@ -45,6 +46,30 @@ Write the body immediately below the front matter. The layout renders the title:
 - Optional `description` supplies the summary; otherwise the first prose paragraph is used.
 - Category descriptions and icons live in `_data/categories.yml`; site identity is in `_config.yml`.
 - Drafts stay in `Undone/`, which is excluded from the build. Posts dated in the future and posts with `published: false` are excluded too. Do not use `--drafts`, `--future`, or `--unpublished` for production builds.
+
+## 更新足迹地图
+
+地图位于 `/map/`。在 `_data/footprints.yml` 中维护两份清单。第一次记录某座城市时，在 `cities` 填写唯一的英文 `id`、中文 `name` 和城市中心的 WGS84 经纬度（`lat`、`lng`）。以后再去同一座城市，沿用该城市的 `id` 即可。
+
+**给已有城市加一段经历**　在 `entries` 下追加一项，给每段经历一个唯一的 `id`。日期用引号括起，支持单月、起止年月、「至今」或童年等文字。以下示例取自现有记录。
+
+```yaml
+- id: guangzhou-benke
+  date: "2022.09–2023.07"
+  text: 在广州读中山大学本科第一年。
+  cities: [guangzhou]
+```
+
+**记录一次多城市行程**　用一条经历写下整次行程，把各站的城市 ID 按到访顺序填入 `cities`。地图会依次连线，所有站点共用这段文字。
+
+```yaml
+- id: henan-waichang
+  date: "2026.07"
+  text: 第二次出差，参加暴雨外场观测实验。
+  cities: [xuchang, gongyi, luoyang, zhengzhou]
+```
+
+列表按首次出现的城市或行程分组，同组经历按填写顺序展示。保存并重新构建博客后，地图和文字列表会一起更新。
 
 ## URL compatibility
 

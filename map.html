@@ -1,0 +1,63 @@
+---
+layout: default
+title: 足迹地图
+permalink: /map/
+description: 在地图上看看我去过的城市，以及在那里读书、生活和出差的片段。
+footprints: true
+---
+{% assign footprints = site.data.footprints %}
+{% assign groups = footprints.entries | group_by_exp: 'entry', 'entry.cities | join: ","' %}
+<div class="shell footprints-page" data-footprints>
+  <header class="page-heading footprints-heading">
+    <h1>足迹地图<span class="heading-dot" aria-hidden="true">.</span></h1>
+    <p>{{ footprints.cities.size }} 座城市 <span aria-hidden="true">·</span> {{ footprints.entries.size }} 段经历</p>
+  </header>
+  <div class="footprints-layout">
+    <div class="map-column" data-map-canvas hidden>
+      <div class="map-frame">
+        <div id="footprints-map" role="region" aria-label="城市足迹互动地图"></div>
+        <button class="map-reset" type="button" data-map-reset hidden>查看全部</button>
+      </div>
+      <div class="map-key" aria-label="图例">
+        <span><i class="map-key-city" aria-hidden="true"></i>到访城市</span>
+        <span><i class="map-key-route" aria-hidden="true"></i>多城行程</span>
+      </div>
+    </div>
+    <section class="footprint-list" aria-labelledby="footprint-list-title">
+      <h2 id="footprint-list-title">足迹记录</h2>
+      <p class="map-status" data-map-status role="status" hidden>底图暂时无法加载，仍可在这里查看全部足迹。</p>
+      {% for group in groups %}
+        {% assign city_ids = group.items.first.cities %}
+        <details class="footprint-group" data-footprint-group data-cities="{{ group.name | escape }}" open>
+          <summary>
+            <span class="footprint-title">
+              {%- for id in city_ids -%}
+                {%- assign city = footprints.cities | where: 'id', id | first -%}
+                {%- unless forloop.first -%}<span class="footprint-stop-link" aria-label="到"> → </span>{%- endunless -%}
+                {{- city.name | escape -}}
+              {%- endfor -%}
+            </span>
+            <span class="footprint-meta">
+              {%- assign group_city = footprints.cities | where: 'id', group.name | first -%}
+              {%- if group_city.summary_label -%}{{ group_city.summary_label | escape }}
+              {%- elsif group.items.size == 1 -%}{{ group.items.first.date | escape }}
+              {%- else -%}{{ group.items.size }} 段经历
+              {%- endif -%}
+            </span>
+          </summary>
+          <div class="footprint-stories">
+            {% for entry in group.items %}
+              <div class="footprint-story" id="{{ entry.id | escape }}">
+                {% if group.items.size > 1 %}<p class="footprint-date">{{ entry.date | escape }}</p>{% endif %}
+                <p>{{ entry.text | escape }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        </details>
+      {% else %}
+        <p class="empty-state">还没有足迹记录。</p>
+      {% endfor %}
+    </section>
+  </div>
+  <script id="footprints-cities" type="application/json">{{ footprints.cities | jsonify | replace: '<', '\u003c' }}</script>
+</div>
